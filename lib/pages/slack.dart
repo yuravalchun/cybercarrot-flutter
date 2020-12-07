@@ -3,12 +3,14 @@ import 'package:cybercarrot/widgets/caption.dart';
 import 'package:cybercarrot/widgets/chat.dart';
 import 'package:cybercarrot/widgets/record.dart';
 import 'package:cybercarrot/widgets/search.dart';
+import 'package:cybercarrot/widgets/bottom_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
 class Slack extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,42 +78,15 @@ class Slack extends StatelessWidget {
           Positioned(
             right: 20,
             bottom: 20,
-            child: Container(
-              width: 60,
-              height: 60,
-              child: Icon(
-                Icons.edit_location_outlined,
-                color: Colors.white,
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.deepPurple,
-              ),
-            ),
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/channel');
+              },
+            )
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.textsms),
-            title: Text("DMs"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.alternate_email),
-            title: Text("Mentions"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.face),
-            title: Text("You"),
-          ),
-        ]
-      ),
+      bottomNavigationBar: BottomMenu(),
     );
   }
 }

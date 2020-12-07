@@ -1,4 +1,5 @@
 import 'pages/slack.dart';
+import 'pages/channel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'River',
         theme: ThemeData(primarySwatch: Colors.deepPurple),
-        home: Slack(),
+        initialRoute: '/',
+        routes: {
+          // When navigating to the "/" route, build the FirstScreen widget.
+          '/': (context) => Slack(),
+          // When navigating to the "/second" route, build the SecondScreen widget.
+          '/channel': (context) => Channel(),
+        },
       ),
     );
   }
